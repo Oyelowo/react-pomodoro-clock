@@ -62,7 +62,10 @@ class PomodoroClock extends Component {
                 </div>
 
                 <div>Break</div>
-                <button onClick={this.timeStartStopHandler}>Start</button>
+                <button onClick={this.timeStartStopHandler}>Start/Stop</button>
+                <button onClick={this.timeStartHandler}>Start Time</button>
+                <button onClick={this.timeStopHandler}>Stop Time</button>
+
                 <button onClick={this.timeIncreaseHandler}>Next</button>
                 <button onClick={this.timeReducerHandler}>Previous</button>
 
