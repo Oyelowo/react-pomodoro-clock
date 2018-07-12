@@ -25,10 +25,18 @@ class PomodoroClock extends Component {
     // timeCountDownHandler = () => {         (this.timeReducerHandler, 1000)     }
     // }
 
-    timeStartHandler = () => {
+    timeStartStopHandler = () => {
         this.setState({
             timeStarted: !this.state.timeStarted
         })
+    }
+
+    timeStartHandler = () => {
+        this.setState({timeStarted: true})
+    }
+
+    timeStopHandler = () => {
+        this.setState({timeStarted: false})
     }
 
     timeIncreaseHandler = () => {
@@ -47,14 +55,14 @@ class PomodoroClock extends Component {
 
     render() {
         return (
-            <div>
+            <div className='container'>
                 <div>Business Session: {this.state.sessionTime}
                     <button onClick={this.timeIncreaseHandler}>Next</button>
                     <button onClick={this.timeReducerHandler}>Previous</button>
                 </div>
 
                 <div>Break</div>
-                <button onClick={this.timeStartHandler}>Start</button>
+                <button onClick={this.timeStartStopHandler}>Start</button>
                 <button onClick={this.timeIncreaseHandler}>Next</button>
                 <button onClick={this.timeReducerHandler}>Previous</button>
 
