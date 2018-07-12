@@ -8,7 +8,8 @@ class PomodoroClock extends Component {
         fullTime: '',
         breakTime: '05',
         counter: 1,
-        timeStarted: false
+        timeStarted: false,
+        isOnSession: true
     }
 
     componentDidMount() {
@@ -71,24 +72,36 @@ class PomodoroClock extends Component {
     setSessionTimeHandler = () => {
         this.setState({
             minute: 25,
-            secondsCounter: '0' + 0
+            secondsCounter: '0' + 0,
+            isOnSession: true
         })
     }
 
     setBreakTimeHandler = () => {
         this.setState({
             minute: '0' + 1,
-            secondsCounter: '0' + 0
+            secondsCounter: '0' + 0,
+            isOnSession: false
         })
     }
 
-    resetSessionTimeHandler = () => {
-        this.setState({minute: 25, secondsCounter: ['0'+0], timeStarted: false})
+    resetTimeHandler = () => {
+        if (this.state.isOnSession) {
+            this.setState({
+                minute: 25,
+                secondsCounter: ['0' + 0],
+                timeStarted: false
+            })
+        } else {
+            this.setState({
+                minute: ['0' + 5],
+                secondsCounter: ['0' + 0],
+                timeStarted: false
+            })
+        }
     }
 
-    resetBreakTimeHandler = () => {
-        this.setState({minute: ['0'+5], secondsCounter: ['0'+0], timeStarted: false})
-    }
+    resetBreakTimeHandler = () => {}
 
     render() {
         return (
@@ -105,8 +118,8 @@ class PomodoroClock extends Component {
                 <button onClick={this.timeStartHandler}>Start Time</button>
                 <button onClick={this.timeStopHandler}>Stop Time</button>
 
-                <button onClick={this.resetSessionTimeHandler}>RESET Session</button>
-                <button onClick={this.resetBreakTimeHandler}>RESET Break</button>
+                <button onClick={this.resetTimeHandler}>RESET Time</button>
+                {/* <button onClick={this.resetBreakTimeHandler}>RESET Break</button> */}
 
                 <div>{this.state.minute}
                     : {this.state.secondsCounter}</div>
