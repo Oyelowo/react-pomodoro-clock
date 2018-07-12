@@ -72,7 +72,7 @@ class PomodoroClock extends Component {
     setSessionTimeHandler = () => {
         this.setState({
             minute: 25,
-            secondsCounter: '0' + 0,
+            secondsCounter: ['0' + 0],
             isOnSession: true
         })
     }
