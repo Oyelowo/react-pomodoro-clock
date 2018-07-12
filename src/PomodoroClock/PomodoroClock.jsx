@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 
 class PomodoroClock extends Component {
     state = {
-        sessionTime: 25,
-        seconds: 9,
+        secondsCounter: 0,
+        minute: 20,
+        seconds: 0,
+        fullTime:'',
         breakTime: 5,
         counter: 1,
         timeStarted: false
@@ -40,23 +42,30 @@ class PomodoroClock extends Component {
     }
 
     increaseTimeHandler = () => {
-        let newTime = this.state.sessionTime < 60
-            ? this.state.sessionTime + 1
+        let newTime = this.state.secondsCounter < 60
+            ? this.state.secondsCounter + 1
             : 0;
-        this.setState({sessionTime: newTime})
+        this.setState({secondsCounter: newTime})
     }
 
     decreaseTimeHandler = () => {
-        let newTime = this.state.sessionTime > 0
-            ? this.state.sessionTime - 1
-            : 60;
-        this.setState({sessionTime: newTime})
+        let newTime = this.state.secondsCounter > 0
+            ? this.state.secondsCounter - 1
+            : 59;
+            newTime = newTime <= 9 ? '0' + newTime: newTime;
+            let min = newTime == 59 ? this.state.minute - 1: this.state.minute
+        this.setState({secondsCounter: newTime, minute: min})
+    }
+
+    sessionTimeHandler = () => {
+        const {secondsCounter, minute} = this.state;
+        
     }
 
     render() {
         return (
             <div className='container'>
-                <div>Business Session: {this.state.sessionTime}
+                <div>Business Session: {this.state.secondsCounter}
                     <button onClick={this.increaseTimeHandler}>Next</button>
                     <button onClick={this.decreaseTimeHandler}>Previous</button>
                 </div>
@@ -69,8 +78,8 @@ class PomodoroClock extends Component {
                 <button onClick={this.increaseTimeHandler}>Next</button>
                 <button onClick={this.decreaseTimeHandler}>Previous</button>
 
-                <div>Seconds: {this.state.seconds}</div>
-                <div>Time display: {this.state.sessionTime}</div>
+                <div>minute:{this.state.minute} .....Seconds: {this.state.secondsCounter}</div>
+                <div>Time display: {this.state.secondsCounter}</div>
             </div>
         );
     }
