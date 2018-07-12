@@ -79,7 +79,7 @@ class PomodoroClock extends Component {
 
     setBreakTimeHandler = () => {
         this.setState({
-            minute: '0' + 1,
+            minute: ['0' + 1],
             secondsCounter: ['0' + 0],
             isOnSession: false
         })
