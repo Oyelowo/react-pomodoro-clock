@@ -12,7 +12,7 @@ class PomodoroClock extends Component {
     componentDidMount() {
         this.timerID = setInterval(() => {
             if (this.state.timeStarted) {
-                this.timeIncreaseHandler()
+                this.decreaseTimeHandler()
             }
         }, 1000);
 
@@ -22,7 +22,7 @@ class PomodoroClock extends Component {
         clearInterval(this.timerID)
     }
 
-    // timeCountDownHandler = () => {         (this.timeReducerHandler, 1000)     }
+    // timeCountDownHandler = () => {         (this.decreaseTimeHandler, 1000)     }
     // }
 
     timeStartStopHandler = () => {
@@ -39,14 +39,14 @@ class PomodoroClock extends Component {
         this.setState({timeStarted: false})
     }
 
-    timeIncreaseHandler = () => {
+    increaseTimeHandler = () => {
         let newTime = this.state.sessionTime < 60
             ? this.state.sessionTime + 1
             : 0;
         this.setState({sessionTime: newTime})
     }
 
-    timeReducerHandler = () => {
+    decreaseTimeHandler = () => {
         let newTime = this.state.sessionTime > 0
             ? this.state.sessionTime - 1
             : 60;
@@ -57,8 +57,8 @@ class PomodoroClock extends Component {
         return (
             <div className='container'>
                 <div>Business Session: {this.state.sessionTime}
-                    <button onClick={this.timeIncreaseHandler}>Next</button>
-                    <button onClick={this.timeReducerHandler}>Previous</button>
+                    <button onClick={this.increaseTimeHandler}>Next</button>
+                    <button onClick={this.decreaseTimeHandler}>Previous</button>
                 </div>
 
                 <div>Break</div>
@@ -66,8 +66,8 @@ class PomodoroClock extends Component {
                 <button onClick={this.timeStartHandler}>Start Time</button>
                 <button onClick={this.timeStopHandler}>Stop Time</button>
 
-                <button onClick={this.timeIncreaseHandler}>Next</button>
-                <button onClick={this.timeReducerHandler}>Previous</button>
+                <button onClick={this.increaseTimeHandler}>Next</button>
+                <button onClick={this.decreaseTimeHandler}>Previous</button>
 
                 <div>Seconds: {this.state.seconds}</div>
                 <div>Time display: {this.state.sessionTime}</div>
