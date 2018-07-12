@@ -4,7 +4,7 @@ class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
         minute: 20,
-        seconds: 0,
+        seconds: '' + 0,
         fullTime:'',
         breakTime: 5,
         counter: 1,
@@ -57,20 +57,25 @@ class PomodoroClock extends Component {
         this.setState({secondsCounter: newTime, minute: min})
     }
 
-    sessionTimeHandler = () => {
-        const {secondsCounter, minute} = this.state;
-        
+    setSessionTimeHandler = () => {
+        this.setState({minute: 25, secondsCounter: 0})       
     }
+
+    setBreakTimeHandler = () => {
+        this.setState({minute: 5, secondsCounter: 0})       
+    }
+
+    
 
     render() {
         return (
             <div className='container'>
-                <div>Business Session: {this.state.secondsCounter}
+                <div><button onClick={this.setSessionTimeHandler}>Business Session</button> : {this.state.secondsCounter}
                     <button onClick={this.increaseTimeHandler}>Next</button>
                     <button onClick={this.decreaseTimeHandler}>Previous</button>
                 </div>
 
-                <div>Break</div>
+                <button onClick={this.setBreakTimeHandler}>Break</button>
                 <button onClick={this.timeStartStopHandler}>Start/Stop</button>
                 <button onClick={this.timeStartHandler}>Start Time</button>
                 <button onClick={this.timeStopHandler}>Stop Time</button>
