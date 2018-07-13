@@ -114,7 +114,6 @@ class PomodoroClock extends Component {
                 <button onClick={this.timeStopHandler}>Stop Time</button>
 
                 <button onClick={this.resetTimeHandler}>RESET Time</button>
-                {/* <button onClick={this.resetBreakTimeHandler}>RESET Break</button> */}
 
                 <div>{minute <= 9
                         ? '0' + minute
