@@ -19,6 +19,7 @@ class PomodoroClock extends Component {
             }
         }, 1000);
 
+    //    let timeUpSound = document.
     }
 
     componentWillUnmount() {
@@ -120,6 +121,7 @@ class PomodoroClock extends Component {
                         ? '0' + secondsCounter
                         : secondsCounter}</div>
                 <div>Time display: {secondsCounter}</div>
+                <audio src="../assets/timeUp.mp3"></audio>
             </div>
         );
     }
