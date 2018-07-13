@@ -89,6 +89,8 @@ class PomodoroClock extends Component {
     resetBreakTimeHandler = () => {}
 
     render() {
+        const{minute, secondsCounter}= this.state;
+        
         return (
             <div className='container'>
                 <div>
@@ -106,7 +108,7 @@ class PomodoroClock extends Component {
                 <button onClick={this.resetTimeHandler}>RESET Time</button>
                 {/* <button onClick={this.resetBreakTimeHandler}>RESET Break</button> */}
 
-                <div>{this.state.minute}
+                <div>{this.state.minute <= 9 ? '0' + this.state.minute: this.state.minute}
                     : {this.state.secondsCounter}</div>
                 <div>Time display: {this.state.secondsCounter}</div>
             </div>
