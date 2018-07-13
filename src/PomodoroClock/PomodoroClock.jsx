@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
-        minute: 25,
+        minute: 55,
         seconds: 0,
         fullTime: '',
         breakTime: 5,
@@ -43,7 +43,7 @@ class PomodoroClock extends Component {
     }
 
     increaseSecondsHandler = () => {
-        let newTime = this.state.secondsCounter < 60
+        let newTime = this.state.secondsCounter < 59
             ? this.state.secondsCounter + 1
             : 0;
         this.setState({secondsCounter: newTime})
@@ -82,7 +82,17 @@ class PomodoroClock extends Component {
 
     }
 
-    resetBreakTimeHandler = () => {}
+    increaseMinuteHandler = () => {
+        const minute = this.state.minute <= 59
+            ? this.state.minute + 1
+            : 0;
+        this.setState({minute: minute})
+    }
+
+    decreaseMinuteHandler = () => {
+        const minute = this.state.minute - 1;
+        this.setState({minute: minute})
+    }
 
     render() {
         const {minute, secondsCounter} = this.state;
@@ -92,8 +102,8 @@ class PomodoroClock extends Component {
                 <div>
                     <button onClick={this.setSessionTimeHandler}>Business Session</button>
                     : {this.state.secondsCounter}
-                    <button onClick={this.increaseSecondsHandler}>Next</button>
-                    <button onClick={this.decreaseSecondsHandler}>Previous</button>
+                    <button onClick={this.increaseMinuteHandler}>Next</button>
+                    <button onClick={this.decreaseMinuteHandler}>Previous</button>
                 </div>
 
                 <button onClick={this.setBreakTimeHandler}>Break</button>
