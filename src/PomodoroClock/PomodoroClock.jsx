@@ -25,8 +25,8 @@ class PomodoroClock extends Component {
         clearInterval(this.timerID)
     }
 
-    // timeCountDownHandler = () => {         (this.decreaseSecondsHandler, 1000)
-    //  } }
+    // timeCountDownHandler = () => {         (this.decreaseSecondsHandler, 1000)  }
+    // }
 
     timeStartStopHandler = () => {
         this.setState({
@@ -70,11 +70,7 @@ class PomodoroClock extends Component {
     }
 
     setBreakTimeHandler = () => {
-        this.setState({
-            minute:  5,
-            secondsCounter: 0,
-            isOnSession: false
-        })
+        this.setState({minute: 5, secondsCounter: 0, isOnSession: false})
     }
 
     resetTimeHandler = () => {
@@ -89,8 +85,8 @@ class PomodoroClock extends Component {
     resetBreakTimeHandler = () => {}
 
     render() {
-        const{minute, secondsCounter}= this.state;
-        
+        const {minute, secondsCounter} = this.state;
+
         return (
             <div className='container'>
                 <div>
@@ -108,9 +104,13 @@ class PomodoroClock extends Component {
                 <button onClick={this.resetTimeHandler}>RESET Time</button>
                 {/* <button onClick={this.resetBreakTimeHandler}>RESET Break</button> */}
 
-                <div>{this.state.minute <= 9 ? '0' + this.state.minute: this.state.minute}
-                    : {this.state.secondsCounter}</div>
-                <div>Time display: {this.state.secondsCounter}</div>
+                <div>{minute <= 9
+                        ? '0' + minute
+                        : minute}
+                    : {secondsCounter <= 9
+                        ? '0' + secondsCounter
+                        : secondsCounter}</div>
+                <div>Time display: {secondsCounter}</div>
             </div>
         );
     }
