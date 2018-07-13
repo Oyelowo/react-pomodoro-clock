@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 
 class PomodoroClock extends Component {
     state = {
-        secondsCounter: '00',
+        secondsCounter: 0,
         minute: 20,
-        seconds: '00',
+        seconds: 0,
         fullTime: '',
-        breakTime: '05',
+        breakTime: 5,
         counter: 1,
         timeStarted: false,
         isOnSession: true
@@ -53,34 +53,34 @@ class PomodoroClock extends Component {
         let newTime = this.state.secondsCounter > 0
             ? this.state.secondsCounter - 1
             : 59;
-        newTime = newTime <= 9
-            ? '0' + newTime
-            : newTime;
+        // newTime = newTime <= 9
+        //     ? '0' + newTime
+        //     : newTime;
         if (this.state.minute == 0 && this.state.secondsCounter == 0) {
-            newTime = '0' + 0;
+            newTime =  0;
         }
         let min = newTime == 59 && this.state.minute > 0
             ? this.state.minute - 1
             : this.state.minute;
 
-        min = this.state.min <= 9
-            ? '0' + min
-            : min;
+        // min = this.state.min <= 9
+        //     ? 0 + min
+        //     : min;
         this.setState({secondsCounter: newTime, minute: min})
     }
 
     setSessionTimeHandler = () => {
         this.setState({
             minute: 25,
-            secondsCounter: ['0' + 0],
+            secondsCounter: 0,
             isOnSession: true
         })
     }
 
     setBreakTimeHandler = () => {
         this.setState({
-            minute: ['0' + 1],
-            secondsCounter: ['0' + 0],
+            minute:  1,
+            secondsCounter: 0,
             isOnSession: false
         })
     }
@@ -89,13 +89,13 @@ class PomodoroClock extends Component {
         if (this.state.isOnSession) {
             this.setState({
                 minute: 25,
-                secondsCounter: ['0' + 0],
+                secondsCounter: 0,
                 timeStarted: false
             })
         } else {
             this.setState({
-                minute: ['0' + 5],
-                secondsCounter: ['0' + 0],
+                minute: 5,
+                secondsCounter: 0,
                 timeStarted: false
             })
         }
