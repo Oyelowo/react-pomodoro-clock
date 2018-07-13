@@ -25,8 +25,6 @@ class PomodoroClock extends Component {
         clearInterval(this.timerID)
     }
 
-    // timeCountDownHandler = () => {         (this.decreaseSecondsHandler, 1000)  }
-    // }
 
     timeStartStopHandler = () => {
         this.setState({
