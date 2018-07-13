@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
-        minute: 55,
+        minute: 25,
         seconds: 0,
         fullTime: '',
         breakTime: 5,
@@ -18,14 +18,24 @@ class PomodoroClock extends Component {
                 this.decreaseSecondsHandler();
             }
         }, 1000);
+    }
 
-    //    let timeUpSound = document.
+    componentDidUpdate() {
+        if (this.state.minute === 0) {
+            this.playSound();
+        }
+        
+    }
+
+    playSound = () => {
+        let timeUpSound = document.getElementById('timeUpSound');
+        // timeUpSound.currentTime = 0;
+        timeUpSound.play();
     }
 
     componentWillUnmount() {
         clearInterval(this.timerID)
     }
-
 
     timeStartStopHandler = () => {
         this.setState({
@@ -113,6 +123,7 @@ class PomodoroClock extends Component {
                 <button onClick={this.timeStopHandler}>Stop Time</button>
 
                 <button onClick={this.resetTimeHandler}>RESET Time</button>
+                <button onClick={this.playSound}>Play sound</button>
 
                 <div>{minute <= 9
                         ? '0' + minute
@@ -121,7 +132,9 @@ class PomodoroClock extends Component {
                         ? '0' + secondsCounter
                         : secondsCounter}</div>
                 <div>Time display: {secondsCounter}</div>
-                <audio src="../assets/timeUp.mp3"></audio>
+                <audio
+                    id='timeUpSound' src="../assets/timeUp.mp3" preload="auto" > 
+                    </audio>
             </div>
         );
     }
