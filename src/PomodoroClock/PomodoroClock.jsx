@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
-        minute: 20,
+        minute: 25,
         seconds: 0,
         fullTime: '',
         breakTime: 5,
