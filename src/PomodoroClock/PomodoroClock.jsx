@@ -15,7 +15,7 @@ class PomodoroClock extends Component {
     componentDidMount() {
         this.timerID = setInterval(() => {
             if (this.state.timeStarted) {
-                this.decreaseTimeHandler()
+                this.decreaseSecondsHandler();
             }
         }, 1000);
 
@@ -25,7 +25,7 @@ class PomodoroClock extends Component {
         clearInterval(this.timerID)
     }
 
-    // timeCountDownHandler = () => {         (this.decreaseTimeHandler, 1000)     }
+    // timeCountDownHandler = () => {         (this.decreaseSecondsHandler, 1000)     }
     // }
 
     timeStartStopHandler = () => {
@@ -42,14 +42,14 @@ class PomodoroClock extends Component {
         this.setState({timeStarted: false})
     }
 
-    increaseTimeHandler = () => {
+    increaseSecondsHandler = () => {
         let newTime = this.state.secondsCounter < 60
             ? this.state.secondsCounter + 1
             : 0;
         this.setState({secondsCounter: newTime})
     }
 
-    decreaseTimeHandler = () => {
+    decreaseSecondsHandler = () => {
         let newTime = this.state.secondsCounter > 0
             ? this.state.secondsCounter - 1
             : 59;
@@ -109,8 +109,8 @@ class PomodoroClock extends Component {
                 <div>
                     <button onClick={this.setSessionTimeHandler}>Business Session</button>
                     : {this.state.secondsCounter}
-                    <button onClick={this.increaseTimeHandler}>Next</button>
-                    <button onClick={this.decreaseTimeHandler}>Previous</button>
+                    <button onClick={this.increaseSecondsHandler}>Next</button>
+                    <button onClick={this.decreaseSecondsHandler}>Previous</button>
                 </div>
 
                 <button onClick={this.setBreakTimeHandler}>Break</button>
