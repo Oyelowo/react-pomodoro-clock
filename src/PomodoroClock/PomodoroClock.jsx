@@ -90,7 +90,9 @@ class PomodoroClock extends Component {
     }
 
     decreaseMinuteHandler = () => {
-        const minute = this.state.minute - 1;
+        const minute = this.state.minute > 0
+            ? this.state.minute - 1
+            : 60;
         this.setState({minute: minute})
     }
 
