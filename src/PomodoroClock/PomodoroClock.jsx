@@ -78,11 +78,11 @@ class PomodoroClock extends Component {
     }
 
     resetTimeHandler = () => {
-        const minute = this.state.isOnSession
+        const resetMinute = this.state.isOnSession
             ? 25
             : 5;
 
-        this.setState({minute: minute, secondsCounter: 0, timeStarted: false})
+        this.setState({minute: resetMinute, secondsCounter: 0, timeStarted: false})
 
     }
 
