@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import timeUpSound_mp3 from '../assets/timeUp.mp3';
+ 
 class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
@@ -142,7 +143,7 @@ class PomodoroClock extends Component {
                 <audio
                     id='timeUpSound'
                     ref={this.myRef}
-                    src="https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3"></audio>
+                    src={timeUpSound_mp3} controls autoPlay crossOrigin="anonymous"></audio>
             </div>
         );
     }
