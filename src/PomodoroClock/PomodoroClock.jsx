@@ -22,9 +22,9 @@ class PomodoroClock extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.minutesCounter === 0 && this.state.secondsCounter === 0) {
+        if (this.state.minutesCounter === 0 && this.state.secondsCounter === 0 && this.state.timeStarted) {
             this.playSound();
-
+            this.setState({timeStarted: false})
         }
 
     }
