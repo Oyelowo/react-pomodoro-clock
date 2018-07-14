@@ -70,16 +70,13 @@ class PomodoroClock extends Component {
         let newTime = this.state.secondsCounter > 0
             ? this.state.secondsCounter - 1
             : 59;
-        // newTime = newTime <= 9     ? '0' + newTime     : newTime;
-        if (this.state.minutesCounter == 0 && this.state.secondsCounter == 0) {
+        if (this.state.minutesCounter === 0 && this.state.secondsCounter === 0) {
             newTime = 0;
         }
-        let min = newTime == 59 && this.state.minutesCounter > 0
+        let updatedMinute = newTime === 59 && this.state.minutesCounter > 0
             ? this.state.minutesCounter - 1
             : this.state.minutesCounter;
-
-        // min = this.state.min <= 9     ? 0 + min     : min;
-        this.setState({secondsCounter: newTime, minutesCounter: min})
+        this.setState({secondsCounter: newTime, minutesCounter: updatedMinute})
     }
 
     setSessionTimeHandler = () => {
