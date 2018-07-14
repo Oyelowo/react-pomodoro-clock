@@ -20,7 +20,6 @@ class PomodoroClock extends Component {
                 this.decreaseSecondsHandler();
             }
         }, 1000);
-        console.log(this.audioRef);
     }
 
     componentDidUpdate() {
