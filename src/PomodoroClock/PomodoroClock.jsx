@@ -11,6 +11,8 @@ class PomodoroClock extends Component {
         isOnSession: true
     }
 
+    myRef = React.createRef();
+
     componentDidMount() {
         this.timerID = setInterval(() => {
             if (this.state.timeStarted) {
@@ -22,18 +24,23 @@ class PomodoroClock extends Component {
     componentDidUpdate() {
         if (this.state.minutesCounter === 0 && this.state.secondsCounter === 0) {
             this.playSound();
+
         }
 
     }
 
-    playSound = () => {
-        let timeUpSound = document.getElementById('timeUpSound');
-        // timeUpSound.currentTime = 0;
-        timeUpSound.play();
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+        clearTimeout(this.setTimeOut);
     }
 
-    componentWillUnmount() {
-        clearInterval(this.timerID)
+    playSound = () => {
+        // let timeUpSound = document.getElementById('timeUpSound');
+        // timeUpSound.currentTime = 0; timeUpSound.play();
+        this
+            .myRef
+            .current
+            .play()
     }
 
     timeStartStopHandler = () => {
@@ -133,8 +140,8 @@ class PomodoroClock extends Component {
                 <div>Time display: {secondsCounter}</div>
                 <audio
                     id='timeUpSound'
-                    src="https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3"
-                    preload="auto"></audio>
+                    ref={this.myRef}
+                    src="https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3"></audio>
             </div>
         );
     }
