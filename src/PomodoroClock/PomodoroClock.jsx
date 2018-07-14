@@ -3,8 +3,7 @@ import React, {Component} from 'react';
 class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
-        minute: 25,
-        seconds: 0,
+        minutesCounter: 25,
         fullTime: '',
         breakTime: 5,
         counter: 1,
@@ -21,7 +20,7 @@ class PomodoroClock extends Component {
     }
 
     componentDidUpdate() {
-        if (this.state.minute === 0 && this.state.seconds === 0) {
+        if (this.state.minutesCounter === 0 && this.state.secondsCounter === 0) {
             this.playSound();
         }
 
@@ -63,58 +62,58 @@ class PomodoroClock extends Component {
             ? this.state.secondsCounter - 1
             : 59;
         // newTime = newTime <= 9     ? '0' + newTime     : newTime;
-        if (this.state.minute == 0 && this.state.secondsCounter == 0) {
+        if (this.state.minutesCounter == 0 && this.state.secondsCounter == 0) {
             newTime = 0;
         }
-        let min = newTime == 59 && this.state.minute > 0
-            ? this.state.minute - 1
-            : this.state.minute;
+        let min = newTime == 59 && this.state.minutesCounter > 0
+            ? this.state.minutesCounter - 1
+            : this.state.minutesCounter;
 
         // min = this.state.min <= 9     ? 0 + min     : min;
-        this.setState({secondsCounter: newTime, minute: min})
+        this.setState({secondsCounter: newTime, minutesCounter: min})
     }
 
     setSessionTimeHandler = () => {
-        this.setState({minute: 25, secondsCounter: 0, isOnSession: true})
+        this.setState({minutesCounter: 25, secondsCounter: 0, isOnSession: true})
     }
 
     setBreakTimeHandler = () => {
-        this.setState({minute: 5, secondsCounter: 0, isOnSession: false})
+        this.setState({minutesCounter: 5, secondsCounter: 0, isOnSession: false})
     }
 
     resetTimeHandler = () => {
-        const resetMinute = this.state.isOnSession
+        const resetMinutesCounter = this.state.isOnSession
             ? 25
             : 5;
 
-        this.setState({minute: resetMinute, secondsCounter: 0, timeStarted: false})
+        this.setState({minutesCounter: resetMinutesCounter, secondsCounter: 0, timeStarted: false})
 
     }
 
-    increaseMinuteHandler = () => {
-        const minute = this.state.minute <= 59
-            ? this.state.minute + 1
+    increaseMinutesCounterHandler = () => {
+        const minutesCounter = this.state.minutesCounter <= 59
+            ? this.state.minutesCounter + 1
             : 0;
-        this.setState({minute: minute})
+        this.setState({minutesCounter: minutesCounter})
     }
 
-    decreaseMinuteHandler = () => {
-        const minute = this.state.minute > 0
-            ? this.state.minute - 1
+    decreaseMinutesCounterHandler = () => {
+        const minutesCounter = this.state.minutesCounter > 0
+            ? this.state.minutesCounter - 1
             : 60;
-        this.setState({minute: minute})
+        this.setState({minutesCounter: minutesCounter})
     }
 
     render() {
-        const {minute, secondsCounter} = this.state;
+        const {minutesCounter, secondsCounter} = this.state;
 
         return (
             <div className='container'>
                 <div>
                     <button onClick={this.setSessionTimeHandler}>Business Session</button>
                     : {this.state.secondsCounter}
-                    <button onClick={this.increaseMinuteHandler}>Next</button>
-                    <button onClick={this.decreaseMinuteHandler}>Previous</button>
+                    <button onClick={this.increaseMinutesCounterHandler}>Next</button>
+                    <button onClick={this.decreaseMinutesCounterHandler}>Previous</button>
                 </div>
 
                 <button onClick={this.setBreakTimeHandler}>Break</button>
@@ -125,9 +124,9 @@ class PomodoroClock extends Component {
                 <button onClick={this.resetTimeHandler}>RESET Time</button>
                 <button onClick={this.playSound}>Play sound</button>
 
-                <div>{minute <= 9
-                        ? '0' + minute
-                        : minute}
+                <div>{minutesCounter <= 9
+                        ? '0' + minutesCounter
+                        : minutesCounter}
                     : {secondsCounter <= 9
                         ? '0' + secondsCounter
                         : secondsCounter}</div>
