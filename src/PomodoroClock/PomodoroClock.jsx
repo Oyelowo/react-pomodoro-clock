@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import timeUpSound_mp3 from '../assets/timeUp.mp3';
+import './PomodoroClock.css';
  
 class PomodoroClock extends Component {
     state = {

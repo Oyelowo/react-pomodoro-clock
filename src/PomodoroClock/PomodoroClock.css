@@ -1,3 +1,5 @@
-.container{
-    background: radial-gradient(pink);
+body {
+    background: radial-gradient(pink, rgb(184, 129, 138));
 }
+
+.container {}
