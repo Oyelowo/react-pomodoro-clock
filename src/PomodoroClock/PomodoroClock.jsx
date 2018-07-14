@@ -143,7 +143,7 @@ class PomodoroClock extends Component {
                 <audio
                     id='timeUpSound'
                     ref={this.myRef}
-                    src={timeUpSound_mp3} controls autoPlay crossOrigin="anonymous"></audio>
+                    src={timeUpSound_mp3}></audio>
             </div>
         );
     }
