@@ -12,7 +12,7 @@ class PomodoroClock extends Component {
         isOnSession: true
     }
 
-    myRef = React.createRef();
+    audioRef = React.createRef();
 
     componentDidMount() {
         this.timerID = setInterval(() => {
@@ -20,6 +20,7 @@ class PomodoroClock extends Component {
                 this.decreaseSecondsHandler();
             }
         }, 1000);
+        console.log(this.audioRef);
     }
 
     componentDidUpdate() {
@@ -40,7 +41,7 @@ class PomodoroClock extends Component {
         // let timeUpSound = document.getElementById('timeUpSound');
         // timeUpSound.currentTime = 0; timeUpSound.play();
         this
-            .myRef
+            .audioRef
             .current
             .play()
     }
@@ -142,7 +143,7 @@ class PomodoroClock extends Component {
                 <div>Time display: {secondsCounter}</div>
                 <audio
                     id='timeUpSound'
-                    ref={this.myRef}
+                    ref={this.audioRef}
                     src={timeUpSound_mp3}></audio>
             </div>
         );
