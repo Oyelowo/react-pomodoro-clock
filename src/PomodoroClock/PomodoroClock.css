@@ -38,7 +38,7 @@ button {
     height: 300px;
     width: 300px;
     text-align: center;
-    margin: auto;
+    margin: 15px auto;
     border-radius: 50%;
 }
 
@@ -47,5 +47,5 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 3rem;
+    font-size: 52px;
 }

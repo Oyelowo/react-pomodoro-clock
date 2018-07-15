@@ -103,15 +103,28 @@ class PomodoroClock extends Component {
         const minutesCounter = this.state.minutesCounter <= 59
             ? this.state.minutesCounter + 1
             : 0;
+        const secondsCounter = this.state.minutesCounter === 60
+            ? 0
+            : this.state.secondsCounter
         this.setState({minutesCounter: minutesCounter})
+        if(minutesCounter === 60){
+            this.setState({secondsCounter: 0})
+       }
     }
 
     decreaseMinutesCounterHandler = () => {
         const minutesCounter = this.state.minutesCounter > 0
             ? this.state.minutesCounter - 1
             : 60;
+
+        // const secondsCounter = this.state.minutesCounter === 60
+        //     ? 0
+        //     : this.state.secondsCounter
         this.setState({minutesCounter: minutesCounter})
-    }
+        if(minutesCounter === 60){
+            this.setState({secondsCounter: 0})
+       }
+    } 
 
     render() {
         const {minutesCounter, secondsCounter, isOnSession} = this.state;
@@ -144,12 +157,14 @@ class PomodoroClock extends Component {
 
                 <button onClick={this.resetTimeHandler}>RESET Time</button>
 
-                <div className='timeContainer'><span id='time'>{minutesCounter <= 9
-                        ? '0' + minutesCounter
-                        : minutesCounter}
-                    : {secondsCounter <= 9
-                        ? '0' + secondsCounter
-                        : secondsCounter}</span></div>
+                <div className='timeContainer'>
+                    <span id='time'>{minutesCounter <= 9
+                            ? '0' + minutesCounter
+                            : minutesCounter}
+                        : {secondsCounter <= 9
+                            ? '0' + secondsCounter
+                            : secondsCounter}</span>
+                </div>
                 <audio
                     id='timeUpSound'
                     ref={this.audioRef}
