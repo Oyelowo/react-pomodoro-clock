@@ -119,19 +119,30 @@ class PomodoroClock extends Component {
         return (
             <div className='container'>
                 <div>
-                    <button onClick={this.setSessionTimeHandler}>Business Session</button>
-                    : {this.state.secondsCounter}
-                    <button onClick={this.increaseMinutesCounterHandler}>Next</button>
-                    <button onClick={this.decreaseMinutesCounterHandler}>Previous</button>
+                    <button
+                        style={{
+                        backgroundColor: isOnSession
+                            ? '#0097B2'
+                            : ''
+                    }}
+                        onClick={this.setSessionTimeHandler}>Session</button>
+
+                    <button
+                        style={{
+                        backgroundColor: !isOnSession
+                            ? '#0097B2'
+                            : ''
+                    }}
+                        onClick={this.setBreakTimeHandler}>Break</button>
                 </div>
 
-                <button onClick={this.setBreakTimeHandler}>Break</button>
+                <button onClick={this.increaseMinutesCounterHandler}>Next</button>
+                <button onClick={this.decreaseMinutesCounterHandler}>Previous</button>
                 <button onClick={this.timeStartStopHandler}>Start/Stop</button>
                 <button onClick={this.timeStartHandler}>Start Time</button>
                 <button onClick={this.timeStopHandler}>Stop Time</button>
 
                 <button onClick={this.resetTimeHandler}>RESET Time</button>
-                <button onClick={this.playSound}>Play sound</button>
 
                 <div>{minutesCounter <= 9
                         ? '0' + minutesCounter

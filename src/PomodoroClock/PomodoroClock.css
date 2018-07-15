@@ -10,3 +10,8 @@ body {
     transform: translate(-50% ,-50%);
     height: 60%;
 }
+
+button{
+    padding: 7px 40px;
+    letter-spacing: 1px;
+}
