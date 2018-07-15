@@ -103,13 +103,11 @@ class PomodoroClock extends Component {
         const minutesCounter = this.state.minutesCounter <= 59
             ? this.state.minutesCounter + 1
             : 0;
-        const secondsCounter = this.state.minutesCounter === 60
+        const secondsCounter = minutesCounter === 60
             ? 0
             : this.state.secondsCounter
-        this.setState({minutesCounter: minutesCounter})
-        if(minutesCounter === 60){
-            this.setState({secondsCounter: 0})
-       }
+        this.setState({minutesCounter: minutesCounter, secondsCounter: secondsCounter})
+
     }
 
     decreaseMinutesCounterHandler = () => {
@@ -117,14 +115,12 @@ class PomodoroClock extends Component {
             ? this.state.minutesCounter - 1
             : 60;
 
-        // const secondsCounter = this.state.minutesCounter === 60
-        //     ? 0
-        //     : this.state.secondsCounter
-        this.setState({minutesCounter: minutesCounter})
-        if(minutesCounter === 60){
-            this.setState({secondsCounter: 0})
-       }
-    } 
+        const secondsCounter = minutesCounter === 60
+            ? 0
+            : this.state.secondsCounter
+        this.setState({minutesCounter: minutesCounter, secondsCounter: secondsCounter})
+
+    }
 
     render() {
         const {minutesCounter, secondsCounter, isOnSession} = this.state;
