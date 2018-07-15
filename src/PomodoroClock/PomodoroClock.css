@@ -1,5 +1,4 @@
-body {
-}
+body {}
 
 .container {
     border: 1px solid cornflowerblue;
@@ -7,11 +6,46 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50% ,-50%);
+    transform: translate(-50%, -50%);
     height: 60%;
 }
 
-button{
+.sessionBreak {
+    margin: auto;
+    text-align: center;
+}
+
+.sessionBreak button {
+    background: #6da7b1;
+    width: 50%;
+    font-weight: bolder;
+    font-size: 1.7rem;
+    color: #fff;
+}
+
+.sessionBreak button:hover {
+    background: #138194;
+}
+
+button {
     padding: 7px 40px;
     letter-spacing: 1px;
+}
+
+.timeContainer {
+    position: relative;
+    border: 2px solid #138194;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    border-radius: 50%;
+}
+
+#time {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
 }
