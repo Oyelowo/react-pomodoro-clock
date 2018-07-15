@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import timeUpSound_mp3 from '../assets/timeUp.mp3';
 import './PomodoroClock.css';
- 
+
 class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
@@ -39,7 +39,9 @@ class PomodoroClock extends Component {
 
     playSound = () => {
         // let timeUpSound = document.getElementById('timeUpSound');
+        // timeUpSound.volume=0.1;
         // timeUpSound.currentTime = 0; timeUpSound.play();
+        this.audioRef.current.currentTime = 0;
         this
             .audioRef
             .current
@@ -138,10 +140,7 @@ class PomodoroClock extends Component {
                         ? '0' + secondsCounter
                         : secondsCounter}</div>
                 <div>Time display: {secondsCounter}</div>
-                <audio
-                    id='timeUpSound'
-                    ref={this.audioRef}
-                    src={timeUpSound_mp3}></audio>
+                <audio id='timeUpSound' ref={this.audioRef} src={timeUpSound_mp3}></audio>
             </div>
         );
     }
