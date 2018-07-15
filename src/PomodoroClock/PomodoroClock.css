@@ -1,5 +1,12 @@
 body {
-    background: radial-gradient(pink, rgb(184, 129, 138));
 }
 
-.container {}
+.container {
+    border: 1px solid cornflowerblue;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+    height: 60%;
+}
