@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import timeUpSound_mp3 from '../assets/timeUp.mp3';
+import breakOverSound from '../assets/timeUp.mp3';
+import sessionOverSound from '../assets/Chord_1.mp3';
 import './PomodoroClock.css';
 
 class PomodoroClock extends Component {
@@ -39,8 +40,7 @@ class PomodoroClock extends Component {
 
     playSound = () => {
         // let timeUpSound = document.getElementById('timeUpSound');
-        // timeUpSound.volume=0.1;
-        // timeUpSound.currentTime = 0; timeUpSound.play();
+        // timeUpSound.volume=0.1; timeUpSound.currentTime = 0; timeUpSound.play();
         this.audioRef.current.currentTime = 0;
         this
             .audioRef
@@ -114,7 +114,7 @@ class PomodoroClock extends Component {
     }
 
     render() {
-        const {minutesCounter, secondsCounter} = this.state;
+        const {minutesCounter, secondsCounter, isOnSession} = this.state;
 
         return (
             <div className='container'>
@@ -140,7 +140,12 @@ class PomodoroClock extends Component {
                         ? '0' + secondsCounter
                         : secondsCounter}</div>
                 <div>Time display: {secondsCounter}</div>
-                <audio id='timeUpSound' ref={this.audioRef} src={timeUpSound_mp3}></audio>
+                <audio
+                    id='timeUpSound'
+                    ref={this.audioRef}
+                    src={isOnSession
+                    ? sessionOverSound
+                    : breakOverSound}></audio>
             </div>
         );
     }
