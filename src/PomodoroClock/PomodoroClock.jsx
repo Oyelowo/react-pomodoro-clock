@@ -17,10 +17,12 @@ class PomodoroClock extends Component {
     audioRef = React.createRef();
 
     componentDidMount() {
-        this.timerID = setInterval(() => {
-            if (this.state.timeStarted) {
-                this.decreaseSecondsHandler();
-            }
+        this.timerID = setTimeout(() => {
+            setInterval(() => {
+                if (this.state.timeStarted) {
+                    this.decreaseSecondsHandler();
+                }
+            }, 1000)
         }, 1000);
     }
 
@@ -125,6 +127,18 @@ class PomodoroClock extends Component {
     render() {
         const {minutesCounter, secondsCounter, isOnSession} = this.state;
 
+        const circle = {
+            fill: 'white',
+            stroke: 'black',
+            strokeWidth: '2',
+            
+            strokeDasharray: '250',
+            strokeDashoffset: '1000',
+            animation: 'rotate 5s linear infinite'
+        }
+
+        // @keyframes rotate {   to {     stroke-dashoffset: 0;   } }
+
         return (
             <div className='container'>
                 <div className='sessionBreak'>
@@ -167,6 +181,10 @@ class PomodoroClock extends Component {
                     src={isOnSession
                     ? sessionOverSound
                     : breakOverSound}></audio>
+
+                <svg height="100" width="100">
+                    <circle style={circle} cx="50" cy="50" r="20"/>
+                </svg>
             </div>
         );
     }
