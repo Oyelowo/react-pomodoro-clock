@@ -54,7 +54,7 @@ class PomodoroClock extends Component {
     }
 
     timeStartHandler = () => {
-        this.setState({timeStarted: true})
+        setTimeout(() => this.setState({timeStarted: true}), 1000)
     }
 
     timeStopHandler = () => {
