@@ -5,6 +5,12 @@ body {
     color: #ffffff;
 }
 
+header {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
 .container {
     min-width: 70%;
     position: absolute;
@@ -20,7 +26,7 @@ body {
 }
 
 .sessionBreak button {
-    background: #6da7b1;
+    background: rgb(204, 131, 143);
     width: 50%;
     font-weight: bolder;
     font-size: 1.7rem;
@@ -28,12 +34,14 @@ body {
 }
 
 .sessionBreak button:hover {
-    background: #138194;
+    background: #ff6fb7;
 }
 
 button {
-    /* padding: 7px 40px; */
+    padding: 7px 40px;
     letter-spacing: 1px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .timeSection {
@@ -79,7 +87,6 @@ button {
 .timeControls {
     width: 100%;
     margin: auto;
-    border: 1px solid #6da7b1;
     text-align: center;
     min-height: 6vh;
 }
@@ -87,7 +94,7 @@ button {
 .timeControls button {
     margin-left: 1vw;
     min-height: 6vh;
-    background: #6da7b1;
+    background: #ff6fb7;
     color: #fff;
 }
 
@@ -95,4 +102,21 @@ button {
 .timeControls button .fas {
     font-size: 100%;
     font-weight: bold;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    background: #ff6fb7;
+    padding: 5px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+footer a {
+    text-decoration: none;
+    color: rgb(224, 191, 191);
 }

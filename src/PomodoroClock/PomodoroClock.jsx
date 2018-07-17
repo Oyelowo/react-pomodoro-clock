@@ -127,7 +127,7 @@ class PomodoroClock extends Component {
                     <button
                         style={{
                         backgroundColor: isOnSession
-                            ? '#138194'
+                            ? '#ff6fb7'
                             : ''
                     }}
                         onClick={this.setSessionTimeHandler}>Session</button>
@@ -135,7 +135,7 @@ class PomodoroClock extends Component {
                     <button
                         style={{
                         backgroundColor: !isOnSession
-                            ? '#138194'
+                            ? '#ff6fb7'
                             : ''
                     }}
                         onClick={this.setBreakTimeHandler}>Break</button>
@@ -154,7 +154,7 @@ class PomodoroClock extends Component {
                         <span id='time'>{minutesCounter <= 9
                                 ? '0' + minutesCounter
                                 : minutesCounter}
-                            : {secondsCounter <= 9
+                            :{secondsCounter <= 9
                                 ? '0' + secondsCounter
                                 : secondsCounter}</span>
                     </div>
