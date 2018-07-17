@@ -174,7 +174,7 @@ class PomodoroClock extends Component {
                         </i>
                         Start/Stop</button>
                     <button onClick={this.timeStartHandler}>
-                        <i className="fas fa-sync-alt"></i>Start</button>
+                        <i className="fas fa-play"></i>Start</button>
                     <button onClick={this.timeStopHandler}>
                         <i className="fas fa-pause"></i>Pause</button>
 
