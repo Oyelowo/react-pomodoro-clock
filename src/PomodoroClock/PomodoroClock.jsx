@@ -127,7 +127,7 @@ class PomodoroClock extends Component {
                     <button
                         style={{
                         backgroundColor: isOnSession
-                            ? '#ff6fb7'
+                            ? '#ff6fb7firebase'
                             : ''
                     }}
                         onClick={this.setSessionTimeHandler}>Session</button>
@@ -135,7 +135,7 @@ class PomodoroClock extends Component {
                     <button
                         style={{
                         backgroundColor: !isOnSession
-                            ? '#ff6fb7'
+                            ? '#ff6fb7firebase'
                             : ''
                     }}
                         onClick={this.setBreakTimeHandler}>Break</button>

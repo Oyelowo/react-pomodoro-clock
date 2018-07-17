@@ -52,7 +52,7 @@ button {
 .timeSection {
     display: flex;
     position: relative;
-    max-height: 60vh;
+    /* max-height: 60vh; */
 }
 
 .timeContainer {
@@ -114,14 +114,10 @@ button {
 }
 
 footer {
-    max-width: 50vw;
+    max-width: 90vw;
     text-align: center;
     margin: 5vh auto 0;
     font-size: 190%;
-    /* background: hsl(330, 100%, 72%);
-    padding: 1vw;
-    box-shadow: var(--myTextShadow);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 footer a {
@@ -136,4 +132,30 @@ footer a {
 
 footer a:hover {
     opacity: 0.8;
+}
+
+@media(max-width: 768px){
+    .timeSection{
+        min-height: 40vh;
+    }
+
+    .timeContainer{
+        min-height: 40vh;
+        min-width: 40vh;
+    }
+
+    .minuteChangerBox {
+        max-width: 20%;
+        position: absolute;
+        top: 50%;
+        left:20%;
+        transform: translate(0, -50%);
+        font-size: 6vh;
+      
+    }
+
+    footer{
+        margin-top: 8vh;
+        font-size: 1.5rem;
+    }
 }
