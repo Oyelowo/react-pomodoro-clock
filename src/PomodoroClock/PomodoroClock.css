@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Gaegu', cursive;
+    color: #ffffff;
 }
 
 .container {
@@ -43,7 +44,7 @@ button {
 
 .timeContainer {
     position: relative;
-    border: 2px solid #138194;
+    border: 2px solid #fff;
     min-height: 20vw;
     min-width: 20vw;
     text-align: center;
@@ -58,6 +59,7 @@ button {
     transform: translate(-50%, -50%);
     font-size: 6vw;
     width: 100%;
+    font-weight: bolder;
 }
 
 .minuteChangerBox {
@@ -69,7 +71,7 @@ button {
     font-size: 4vw;
 }
 
-.minuteChangerBox span{
+.minuteChangerBox span {
     display: block;
     margin: auto;
 }
