@@ -38,8 +38,6 @@ class PomodoroClock extends Component {
     }
 
     playSound = () => {
-        // let timeUpSound = document.getElementById('timeUpSound');
-        // timeUpSound.volume=0.1; timeUpSound.currentTime = 0; timeUpSound.play();
         this.audioRef.current.currentTime = 0;
         this
             .audioRef
