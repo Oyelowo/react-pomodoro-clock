@@ -17,13 +17,20 @@ class PomodoroClock extends Component {
     audioRef = React.createRef();
 
     componentDidMount() {
-        this.timerID = setTimeout(() => {
-            setInterval(() => {
-                if (this.state.timeStarted) {
-                    this.decreaseSecondsHandler();
-                }
-            }, 1000)
-        }, 1000);
+        this.timerID = setInterval(() => {
+            if (this.state.timeStarted) {
+                this.decreaseSecondsHandler();
+            }
+        }, 1000)
+        this.timeOut = setTimeout(() => {
+            this.timerID
+        }, 7000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+        clearTimeout(this.timeOut);
+
     }
 
     componentDidUpdate() {
@@ -33,11 +40,6 @@ class PomodoroClock extends Component {
             this.setState({timeStarted: false})
         }
 
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-        clearTimeout(this.setTimeOut);
     }
 
     playSound = () => {
@@ -126,19 +128,6 @@ class PomodoroClock extends Component {
 
     render() {
         const {minutesCounter, secondsCounter, isOnSession} = this.state;
-
-        const circle = {
-            fill: 'white',
-            stroke: 'black',
-            strokeWidth: '2',
-            
-            strokeDasharray: '250',
-            strokeDashoffset: '1000',
-            animation: 'rotate 5s linear infinite'
-        }
-
-        // @keyframes rotate {   to {     stroke-dashoffset: 0;   } }
-
         return (
             <div className='container'>
                 <div className='sessionBreak'>
@@ -159,22 +148,40 @@ class PomodoroClock extends Component {
                         onClick={this.setBreakTimeHandler}>Break</button>
                 </div>
 
-                <button onClick={this.increaseMinutesCounterHandler}>Next</button>
-                <button onClick={this.decreaseMinutesCounterHandler}>Previous</button>
-                <button onClick={this.timeStartStopHandler}>Start/Stop</button>
-                <button onClick={this.timeStartHandler}>Start Time</button>
-                <button onClick={this.timeStopHandler}>Stop Time</button>
-
-                <button onClick={this.resetTimeHandler}>RESET Time</button>
-
-                <div className='timeContainer'>
-                    <span id='time'>{minutesCounter <= 9
-                            ? '0' + minutesCounter
-                            : minutesCounter}
-                        : {secondsCounter <= 9
-                            ? '0' + secondsCounter
-                            : secondsCounter}</span>
+                <div className="timeSection">
+                    <div className='minuteChangerBox'>
+                        <span onClick={this.increaseMinutesCounterHandler}>
+                            <i className="fas fa-arrow-up"></i>
+                        </span>
+                        <span onClick={this.decreaseMinutesCounterHandler}>
+                            <i className="fas fa-arrow-down"></i>
+                        </span>
+                    </div>
+                    <div className='timeContainer'>
+                        <span id='time'>{minutesCounter <= 9
+                                ? '0' + minutesCounter
+                                : minutesCounter}
+                            : {secondsCounter <= 9
+                                ? '0' + secondsCounter
+                                : secondsCounter}</span>
+                    </div>
                 </div>
+
+                <div className="timeControls">
+                    <button onClick={this.timeStartStopHandler}>
+                        <i className="fas fa-play">
+                            <i className="fas fa-pause"></i>
+                        </i>
+                        Start/Stop</button>
+                    <button onClick={this.timeStartHandler}>
+                        <i className="fas fa-sync-alt"></i>Start</button>
+                    <button onClick={this.timeStopHandler}>
+                        <i className="fas fa-pause"></i>Pause</button>
+
+                    <button onClick={this.resetTimeHandler}>
+                        <i className="fas fa-sync-alt"></i>Reset</button>
+                </div>
+
                 <audio
                     id='timeUpSound'
                     ref={this.audioRef}
@@ -182,9 +189,6 @@ class PomodoroClock extends Component {
                     ? sessionOverSound
                     : breakOverSound}></audio>
 
-                <svg height="100" width="100">
-                    <circle style={circle} cx="50" cy="50" r="20"/>
-                </svg>
             </div>
         );
     }
