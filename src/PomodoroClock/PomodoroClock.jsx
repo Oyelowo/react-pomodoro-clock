@@ -7,9 +7,7 @@ class PomodoroClock extends Component {
     state = {
         secondsCounter: 0,
         minutesCounter: 25,
-        fullTime: '',
         breakTime: 5,
-        counter: 1,
         timeStarted: false,
         isOnSession: true
     }
@@ -17,24 +15,21 @@ class PomodoroClock extends Component {
     audioRef = React.createRef();
 
     componentDidMount() {
-        this.timerID = setInterval(() => {
+        setInterval(() => {
             if (this.state.timeStarted) {
                 this.decreaseSecondsHandler();
             }
         }, 1000)
-        this.timeOut = setTimeout(() => {
-            this.timerID
-        }, 7000);
+
     }
 
     componentWillUnmount() {
         clearInterval(this.timerID);
-        clearTimeout(this.timeOut);
-
     }
 
     componentDidUpdate() {
         const {minutesCounter, secondsCounter, timeStarted} = this.state;
+
         if (minutesCounter === 0 && secondsCounter === 0 && timeStarted) {
             this.playSound();
             this.setState({timeStarted: false})
